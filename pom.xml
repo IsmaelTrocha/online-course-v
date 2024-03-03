@@ -25,7 +25,7 @@
     <module>microservice-user</module>
     <module>microservice-gateway</module>
     <module>microservice-discovery-server</module>
-
+    <module>microservice-config</module>
   </modules>
 
   <dependencies>
