@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-gateway" />
-        <module name="m" />
         <module name="microservice-discovery-server" />
+        <module name="m" />
+        <module name="microservice-config" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +20,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="m" options="-parameters" />
+      <module name="microservice-config" options="-parameters" />
       <module name="microservice-discovery-server" options="-parameters" />
       <module name="microservice-gateway" options="-parameters" />
     </option>
