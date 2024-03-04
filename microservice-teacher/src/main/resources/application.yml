@@ -1,0 +1,25 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: microservice-teacher
+
+  datasource:
+    url: jdbc:postgresql://localhost:5434/course-app
+    username: ismael
+    password: Test123
+    test-on-borrow: true
+    validation-query: SELECT 1 FROM dual
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      format-sql: true
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance-id:${random.value}}
