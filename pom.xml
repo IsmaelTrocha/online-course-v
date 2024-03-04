@@ -26,6 +26,10 @@
     <module>microservice-gateway</module>
     <module>microservice-discovery-server</module>
     <module>microservice-config</module>
+    <module>microservice-student</module>
+    <module>microservice-teacher</module>
+    <module>microservice-courses</module>
+    <module>microservice-media-uploader</module>
   </modules>
 
   <dependencies>

@@ -1,4 +1,4 @@
-package com.course.users.controllers;
+package com.course.users.infrastructure;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;

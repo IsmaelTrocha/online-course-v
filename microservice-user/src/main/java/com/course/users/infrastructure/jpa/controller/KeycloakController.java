@@ -1,7 +1,7 @@
-package com.course.users.controllers;
+package com.course.users.infrastructure.jpa.controller;
 
-import com.course.users.controllers.dto.UserDTO;
-import com.course.users.service.IKeycloakService;
+import com.course.users.infrastructure.dto.UserDTO;
+import com.course.users.domain.service.IKeycloakService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.springframework.beans.factory.annotation.Autowired;

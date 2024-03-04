@@ -1,4 +1,4 @@
-package com.course.users.controllers.dto;
+package com.course.users.infrastructure.dto;
 
 import java.io.Serializable;
 import java.util.Set;

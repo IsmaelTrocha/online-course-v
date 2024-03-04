@@ -1,6 +1,6 @@
-package com.course.users.service;
+package com.course.users.domain.service;
 
-import com.course.users.controllers.dto.UserDTO;
+import com.course.users.infrastructure.dto.UserDTO;
 import java.util.List;
 import org.keycloak.representations.idm.UserRepresentation;
 

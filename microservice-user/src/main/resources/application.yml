@@ -1,8 +1,9 @@
+server:
+  port: 8084
+
 spring:
   application:
     name: microservice-user
-  server:
-    port: 0
 
   security:
     oauth2:

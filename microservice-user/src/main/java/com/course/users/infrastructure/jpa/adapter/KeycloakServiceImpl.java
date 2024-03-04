@@ -1,8 +1,8 @@
-package com.course.users.service.impl;
+package com.course.users.infrastructure.jpa.adapter;
 
 import com.course.users.config.keycloak.KeycloakProvider;
-import com.course.users.controllers.dto.UserDTO;
-import com.course.users.service.IKeycloakService;
+import com.course.users.infrastructure.dto.UserDTO;
+import com.course.users.domain.service.IKeycloakService;
 import java.util.Collections;
 import java.util.List;
 import javax.ws.rs.core.Response;

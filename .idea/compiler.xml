@@ -8,9 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-gateway" />
-        <module name="microservice-discovery-server" />
-        <module name="m" />
+        <module name="microservice-student" />
         <module name="microservice-config" />
+        <module name="microservice-teacher" />
+        <module name="microservice-media-uploader" />
+        <module name="microservice-discovery-server" />
+        <module name="microservice-courses" />
+        <module name="m" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,8 +25,12 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="m" options="-parameters" />
       <module name="microservice-config" options="-parameters" />
+      <module name="microservice-courses" options="-parameters" />
       <module name="microservice-discovery-server" options="-parameters" />
       <module name="microservice-gateway" options="-parameters" />
+      <module name="microservice-media-uploader" options="-parameters" />
+      <module name="microservice-student" options="-parameters" />
+      <module name="microservice-teacher" options="-parameters" />
     </option>
   </component>
 </project>
