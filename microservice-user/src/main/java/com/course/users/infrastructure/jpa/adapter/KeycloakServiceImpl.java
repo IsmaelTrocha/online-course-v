@@ -1,8 +1,8 @@
 package com.course.users.infrastructure.jpa.adapter;
 
 import com.course.users.config.keycloak.KeycloakProvider;
-import com.course.users.infrastructure.dto.UserDTO;
 import com.course.users.domain.service.IKeycloakService;
+import com.course.users.infrastructure.dto.UserDTO;
 import java.util.Collections;
 import java.util.List;
 import javax.ws.rs.core.Response;
@@ -115,6 +115,17 @@ public class KeycloakServiceImpl implements IKeycloakService {
                 .remove();
     }
 
+
+    public UserRepresentation getUserRepresentation(String email) {
+        UsersResource userResource = KeycloakProvider.getUserResource();
+        userResource.searchByUsername(email, true);
+        return userResource.get(email).toRepresentation();
+    }
+
+
+    public UsersResource getUsersResource() {
+        return KeycloakProvider.getUserResource();
+    }
 
     /**
      * Metodo para actualizar un usuario en keycloak
