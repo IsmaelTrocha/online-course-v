@@ -3,7 +3,7 @@ spring:
     name: microservice-student
 
   datasource:
-    url: jdbc:postgresql://localhost:5434/course-app
+    url: jdbc:postgresql://localhost:5435/db-student
     username: ismael
     password: Test123
     test-on-borrow: false

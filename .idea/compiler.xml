@@ -9,7 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-gateway" />
         <module name="microservice-student" />
+        <module name="microservice-notification" />
         <module name="microservice-config" />
+        <module name="microservice-messaging" />
         <module name="microservice-teacher" />
         <module name="microservice-media-uploader" />
         <module name="microservice-discovery-server" />
@@ -29,6 +31,8 @@
       <module name="microservice-discovery-server" options="-parameters" />
       <module name="microservice-gateway" options="-parameters" />
       <module name="microservice-media-uploader" options="-parameters" />
+      <module name="microservice-messaging" options="-parameters" />
+      <module name="microservice-notification" options="-parameters" />
       <module name="microservice-student" options="-parameters" />
       <module name="microservice-teacher" options="-parameters" />
     </option>

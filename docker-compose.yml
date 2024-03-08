@@ -2,17 +2,29 @@ version: '3'
 
 services:
 
-  db-online-course:
-    container_name: db-online-course
+  db-course:
+    container_name: db-course
     image: postgres:15.2
     restart: unless-stopped
     environment:
-      POSTGRES_DB: course-app
+      POSTGRES_DB: db-course
       POSTGRES_USER: ismael
       POSTGRES_PASSWORD: Test123
     ports:
       - "5434:5434"
     command: -p 5434
+
+  db-student:
+    container_name: db-student
+    image: postgres:15.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: db-student
+      POSTGRES_USER: ismael
+      POSTGRES_PASSWORD: Test123
+    ports:
+      - "5435:5435"
+    command: -p 5435
 
   db-keycloak:
     container_name: db-keycloak
