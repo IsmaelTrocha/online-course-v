@@ -1,6 +1,6 @@
 package com.onlinecourse.microservicecourses.domain.entities;
 
-import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,12 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Course {
+public class Video {
 
   private Long id;
   private String tittle;
-  private String description;
-  private LearningsOutCome learningsOutCome;
-  private List<CourseContent> courseContents;
-  private List<Languages> languages;
+  private Double duration;
+
+
 }

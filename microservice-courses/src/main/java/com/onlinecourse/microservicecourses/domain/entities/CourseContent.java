@@ -8,12 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Course {
+public class CourseContent {
 
   private Long id;
-  private String tittle;
-  private String description;
-  private LearningsOutCome learningsOutCome;
-  private List<CourseContent> courseContents;
-  private List<Languages> languages;
+  private Course courseId;
+  private List<Video> videos;
+  private Boolean duration;
+
 }
