@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/keycloak/user")
-@PreAuthorize("hasRole('admin_client_role')")
 public class KeycloakController {
 
     @Autowired
