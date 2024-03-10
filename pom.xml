@@ -30,6 +30,8 @@
     <module>microservice-teacher</module>
     <module>microservice-courses</module>
     <module>microservice-media-uploader</module>
+    <module>microservice-messaging</module>
+    <module>microservice-notification</module>
   </modules>
 
   <dependencies>

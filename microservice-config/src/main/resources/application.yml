@@ -3,9 +3,10 @@ server:
 
 spring:
   application:
-    name: config-server
+    name: microservice-config-server
   cloud:
     config:
       server:
-        native:
-          search-locations: classpath:/configurations
+        git:
+          uri: file://${user.home}/configuration-files
+          clone-on-start: true

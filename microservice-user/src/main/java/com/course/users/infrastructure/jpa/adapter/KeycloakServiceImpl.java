@@ -3,12 +3,14 @@ package com.course.users.infrastructure.jpa.adapter;
 import com.course.users.config.keycloak.KeycloakProvider;
 import com.course.users.domain.service.IKeycloakService;
 import com.course.users.infrastructure.dto.UserDTO;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import javax.ws.rs.core.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.keycloak.OAuth2Constants;
-import org.keycloak.admin.client.resource.RealmResource;
+import org.keycloak.admin.client.resource.RolesResource;
 import org.keycloak.admin.client.resource.UserResource;
 import org.keycloak.admin.client.resource.UsersResource;
 import org.keycloak.representations.idm.CredentialRepresentation;
@@ -31,7 +33,6 @@ public class KeycloakServiceImpl implements IKeycloakService {
                 .list();
     }
 
-
     /**
      * Metodo para buscar un usuario por su username
      * @return List<UserRepresentation>
@@ -42,66 +43,65 @@ public class KeycloakServiceImpl implements IKeycloakService {
                 .searchByUsername(username, true);
     }
 
-
     /**
      * Metodo para crear un usuario en keycloak
      * @return String
      */
     public String createUser(@NonNull UserDTO userDTO) {
 
-        int status = 0;
-        UsersResource usersResource = KeycloakProvider.getUserResource();
-
         UserRepresentation userRepresentation = new UserRepresentation();
         userRepresentation.setFirstName(userDTO.getFirstName());
         userRepresentation.setLastName(userDTO.getLastName());
         userRepresentation.setEmail(userDTO.getEmail());
         userRepresentation.setUsername(userDTO.getEmail());
-        userRepresentation.setEnabled(true);
-        userRepresentation.setEmailVerified(true);
+        userRepresentation.setEnabled(false);
+        userRepresentation.setEmailVerified(false);
+
+        CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
+        credentialRepresentation.setValue(userDTO.getPassword());
+        credentialRepresentation.setType(CredentialRepresentation.PASSWORD);
+        credentialRepresentation.setTemporary(Boolean.FALSE);
+
+        List<CredentialRepresentation> credentialRepresentationList = new ArrayList<>();
+        credentialRepresentationList.add(credentialRepresentation);
+        userRepresentation.setCredentials(credentialRepresentationList);
+
+        UsersResource usersResource = getUsersResource();
 
         Response response = usersResource.create(userRepresentation);
 
-        status = response.getStatus();
+        if (Objects.equals(201, response.getStatus())) {
+            List<UserRepresentation> representationList = usersResource.searchByUsername(
+                userDTO.getEmail(), true);
+            emailVerification(userRepresentation.getId());
+            if (userDTO.getRoles().contains("user")) {
 
-        if (status == 201) {
-            String path = response.getLocation().getPath();
-            String userId = path.substring(path.lastIndexOf("/") + 1);
-
-            CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
-            credentialRepresentation.setTemporary(false);
-            credentialRepresentation.setType(CredentialRepresentation.PASSWORD);
-            credentialRepresentation.setValue(userDTO.getPassword());
-
-            usersResource.get(userId).resetPassword(credentialRepresentation);
-
-            RealmResource realmResource = KeycloakProvider.getRealmResource();
-
-            List<RoleRepresentation> rolesRepresentation = null;
-
-            if (userDTO.getRoles() == null || userDTO.getRoles().isEmpty()) {
-                rolesRepresentation = List.of(realmResource.roles().get("user").toRepresentation());
-            } else {
-                rolesRepresentation = realmResource.roles()
-                        .list()
-                        .stream()
-                        .filter(role -> userDTO.getRoles()
-                                .stream()
-                                .anyMatch(roleName -> roleName.equalsIgnoreCase(role.getName())))
-                        .toList();
             }
-
-            realmResource.users().get(userId).roles().realmLevel().add(rolesRepresentation);
-
-            return "User created successfully!!";
-
-        } else if (status == 409) {
-            log.error("User exist already!");
-            return "User exist already!";
-        } else {
-            log.error("Error creating user, please contact with the administrator.");
-            return "Error creating user, please contact with the administrator.";
         }
+
+        return null;
+    }
+
+    private void emailVerification(String userId) {
+        UsersResource usersResource = getUsersResource();
+        usersResource.get(userId).sendVerifyEmail();
+    }
+
+    private RoleRepresentation getRole(String role) {
+        RolesResource rolesResource = getRolesResource();
+        return rolesResource.get(role).toRepresentation();
+    }
+
+    private RolesResource getRolesResource() {
+        return KeycloakProvider
+            .getRealmResource()
+            .roles();
+    }
+
+    private void assignRoleToUser(String userId, String role) {
+        UsersResource usersResource = getUsersResource();
+        UserResource userResource = usersResource.get(userId);
+        RoleRepresentation representation = getRole(role);
     }
 
 

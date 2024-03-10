@@ -1,17 +1,16 @@
-package com.onlinecourse.student.domain.entities;
+package com.onlinecourse.student.infrastructure.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Student {
+public class StudentDto {
 
-  private String id;
   private String name;
   private String lastName;
   private String email;

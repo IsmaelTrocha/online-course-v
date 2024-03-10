@@ -12,11 +12,6 @@ spring:
           issuer-uri: http://localhost:8181/realms/spring-courses-realm
           jwk-set-uri: http://localhost:8181/realms/spring-courses-realm/protocol/openid-connect/certs
 
-logging:
-  level:
-    org:
-      keycloak: DEBUG
-
 jwt:
   auth:
     converter:
