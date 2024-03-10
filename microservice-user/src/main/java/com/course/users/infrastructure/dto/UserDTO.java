@@ -3,10 +3,11 @@ package com.course.users.infrastructure.dto;
 import java.io.Serializable;
 import java.util.Set;
 import lombok.Builder;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 
-@Value
+@Data
 @RequiredArgsConstructor
 @Builder
 public class UserDTO implements Serializable {
@@ -17,4 +18,5 @@ public class UserDTO implements Serializable {
     private String lastName;
     private String password;
     private Set<String> roles;
+
 }

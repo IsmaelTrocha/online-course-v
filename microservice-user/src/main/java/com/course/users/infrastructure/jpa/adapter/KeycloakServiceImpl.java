@@ -49,12 +49,33 @@ public class KeycloakServiceImpl implements IKeycloakService {
      */
     public String createUser(@NonNull UserDTO userDTO) {
 
+        UserRepresentation userRepresentation = getUserRepresentation(userDTO);
+
+        UsersResource usersResource = getUsersResource();
+
+      Response response = usersResource.create(userRepresentation);
+
+      if (Objects.equals(201, response.getStatus())) {
+            List<UserRepresentation> representationList = usersResource.searchByUsername(
+                userDTO.getEmail(), true);
+   //         emailVerification(userRepresentation.getId());
+            if (userDTO.getRoles().contains("TEACHER")) {
+                assignRoleToUser(userRepresentation.getId(), "TEACHER");
+            } else {
+                assignRoleToUser(userRepresentation.getId(), "USER");
+            }
+        }
+
+        return "User registered successfully!!";
+    }
+
+    private static UserRepresentation getUserRepresentation(UserDTO userDTO) {
         UserRepresentation userRepresentation = new UserRepresentation();
         userRepresentation.setFirstName(userDTO.getFirstName());
         userRepresentation.setLastName(userDTO.getLastName());
         userRepresentation.setEmail(userDTO.getEmail());
         userRepresentation.setUsername(userDTO.getEmail());
-        userRepresentation.setEnabled(false);
+        userRepresentation.setEnabled(true);
         userRepresentation.setEmailVerified(false);
 
         CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
@@ -65,21 +86,7 @@ public class KeycloakServiceImpl implements IKeycloakService {
         List<CredentialRepresentation> credentialRepresentationList = new ArrayList<>();
         credentialRepresentationList.add(credentialRepresentation);
         userRepresentation.setCredentials(credentialRepresentationList);
-
-        UsersResource usersResource = getUsersResource();
-
-        Response response = usersResource.create(userRepresentation);
-
-        if (Objects.equals(201, response.getStatus())) {
-            List<UserRepresentation> representationList = usersResource.searchByUsername(
-                userDTO.getEmail(), true);
-            emailVerification(userRepresentation.getId());
-            if (userDTO.getRoles().contains("user")) {
-
-            }
-        }
-
-        return null;
+        return userRepresentation;
     }
 
     private void emailVerification(String userId) {
@@ -102,6 +109,7 @@ public class KeycloakServiceImpl implements IKeycloakService {
         UsersResource usersResource = getUsersResource();
         UserResource userResource = usersResource.get(userId);
         RoleRepresentation representation = getRole(role);
+        userResource.roles().realmLevel().add(Collections.singletonList(representation));
     }
 
 
