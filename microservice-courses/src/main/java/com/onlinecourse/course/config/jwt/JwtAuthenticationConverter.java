@@ -1,8 +1,7 @@
-package com.course.users.config.jwt;
+package com.onlinecourse.course.config.jwt;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,8 +22,6 @@ public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthen
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter =
             new JwtGrantedAuthoritiesConverter();
 
-    @Value("${jwt.auth.converter.principle-attribute}")
-    private String principleAttribute;
 
     @Override
     @NonNull
@@ -34,7 +31,7 @@ public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthen
                 .concat(jwtGrantedAuthoritiesConverter.convert(jwt).stream(), extractResourceRoles(jwt).stream())
                 .toList();
 
-        return new JwtAuthenticationToken(jwt, authorities, getPrincipleClaimName(jwt));
+        return new JwtAuthenticationToken(jwt, authorities, null);
     }
 
 
@@ -49,15 +46,6 @@ public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthen
                 .stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
                 .collect(Collectors.toSet());
-    }
-
-
-    private String getPrincipleClaimName(Jwt jwt) {
-        String claimName = JwtClaimNames.SUB;
-        if (principleAttribute != null) {
-            claimName = principleAttribute;
-        }
-        return jwt.getClaim(claimName);
     }
 }
 
