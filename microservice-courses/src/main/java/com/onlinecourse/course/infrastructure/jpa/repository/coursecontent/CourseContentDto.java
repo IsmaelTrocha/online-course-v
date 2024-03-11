@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "COURSE_CONTENT")
 @Entity
 public class CourseContentDto {
-
+//
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
