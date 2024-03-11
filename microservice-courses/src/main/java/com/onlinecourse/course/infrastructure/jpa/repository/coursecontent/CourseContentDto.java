@@ -31,6 +31,8 @@ public class CourseContentDto {
   @ManyToOne
   @JoinColumn(name = "course_id")
   @JsonIgnore
+  //AlOo+BznnQ7Gnq6+CXdFn4+r4fy7FlWY9iaQl2rb
+  //AKIARO2INWQLXSSLDKAH
   private CourseDto courseId;
   private String tittle;
   @OneToMany(mappedBy = "courseContentId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
