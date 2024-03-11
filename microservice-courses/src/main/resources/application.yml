@@ -6,7 +6,7 @@ spring:
     name: microservice-courses
 
   datasource:
-    url: jdbc:postgresql://localhost:5434/course-app
+    url: jdbc:postgresql://localhost:5434/db-course
     username: ismael
     password: Test123
     test-on-borrow: false
@@ -16,6 +16,13 @@ spring:
     hibernate:
       format-sql: true
       ddl-auto: none
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8181/realms/spring-courses/protocol/openid-connect/certs
+
 
 eureka:
   client:
