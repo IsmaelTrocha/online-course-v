@@ -1,4 +1,4 @@
-package com.onlinecourse.course.config.jwt;
+package com.onlinecourse.course.infrastructure.config.jwt;
 
 import java.util.Collection;
 import java.util.Map;

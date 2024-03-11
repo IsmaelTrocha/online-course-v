@@ -13,7 +13,6 @@ public class Course {
   private Long id;
   private String tittle;
   private String description;
-  private LearningsOutCome learningsOutCome;
   private List<CourseContent> courseContents;
-  private List<Languages> languages;
+  private List<Language> languages;
 }
