@@ -1,8 +1,7 @@
-package com.onlinecourse.course.config;
+package com.onlinecourse.course.infrastructure.config;
 
-import com.onlinecourse.course.config.jwt.JwtAuthenticationConverter;
+import com.onlinecourse.course.infrastructure.config.jwt.JwtAuthenticationConverter;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
