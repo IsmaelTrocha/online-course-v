@@ -1,4 +1,4 @@
-package com.onlinecourse.course.microservicemediauploader;
+package com.onlinecourse.course.mediauploader;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
