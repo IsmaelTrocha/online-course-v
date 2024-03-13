@@ -29,4 +29,5 @@ public class VideoDto {
   @JoinColumn(name = "course_content_id")
   @JsonIgnore
   private CourseContentDto courseContentId;
+  private String duration;
 }
