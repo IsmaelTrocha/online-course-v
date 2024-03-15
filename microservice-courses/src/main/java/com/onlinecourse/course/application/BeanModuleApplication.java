@@ -23,8 +23,10 @@ public class BeanModuleApplication {
 
   @Bean
   public FindCourseByIdApplication findCourseByIdApplication(
-      FindCourseByIdService findCourseByIdService) {
-    return new FindCourseByIdApplication(findCourseByIdService);
+      FindCourseByIdService findCourseByIdService,
+      FindCourseContentByCourseIdApplication findCourseContentByCourseIdApplication) {
+    return new FindCourseByIdApplication(findCourseByIdService,
+        findCourseContentByCourseIdApplication);
   }
 
   @Bean
