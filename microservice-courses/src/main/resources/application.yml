@@ -11,6 +11,14 @@ spring:
     password: Test123
     test-on-borrow: false
     validation-query: SELECT 1 FROM dual
+  flyway:
+    baselineOnMigrate: true
+    user: ismael
+    password: Test123
+    schemas: public
+    createSchemas: true
+    location: db/migrations, db/specific/h2
+    enabled: true
   jpa:
     show-sql: true
     hibernate:
@@ -23,6 +31,8 @@ spring:
         jwt:
           jwk-set-uri: http://localhost:8181/realms/spring-courses/protocol/openid-connect/certs
 
+  messages:
+    basename: i18n/messages
 
 eureka:
   client:

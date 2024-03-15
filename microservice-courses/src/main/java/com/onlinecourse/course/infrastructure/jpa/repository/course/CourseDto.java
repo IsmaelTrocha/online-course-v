@@ -30,7 +30,7 @@ public class CourseDto {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private String tittle;
+  private String title;
   private String description;
   @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<CourseContentDto> courseContents;

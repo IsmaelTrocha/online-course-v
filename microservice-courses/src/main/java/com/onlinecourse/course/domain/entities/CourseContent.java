@@ -12,8 +12,8 @@ public class CourseContent {
 
   private Long id;
   private Course courseId;
-  private String tittle;
+  private String title;
   private List<Video> videos;
-  private Boolean duration;
+  private String duration;
 
 }

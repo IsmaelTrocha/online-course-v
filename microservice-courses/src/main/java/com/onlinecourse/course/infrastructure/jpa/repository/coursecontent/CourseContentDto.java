@@ -34,7 +34,7 @@ public class CourseContentDto {
   //AlOo+BznnQ7Gnq6+CXdFn4+r4fy7FlWY9iaQl2rb
   //AKIARO2INWQLXSSLDKAH
   private CourseDto courseId;
-  private String tittle;
+  private String title;
   @OneToMany(mappedBy = "courseContentId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private List<VideoDto> videos;
   private String duration;

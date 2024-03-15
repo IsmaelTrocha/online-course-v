@@ -1,5 +1,6 @@
 package com.onlinecourse.course.domain.entities;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +12,12 @@ import lombok.NoArgsConstructor;
 public class Course {
 
   private Long id;
-  private String tittle;
+  private String title;
   private String description;
   private List<CourseContent> courseContents;
-  private List<Language> languages;
+  private Language language;
+  private Double price;
+  private String createdBy;
+  private LocalDateTime creationDate;
+  private Level level;
 }

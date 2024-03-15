@@ -1,19 +1,22 @@
 -- Crear la tabla COURSES
 CREATE TABLE COURSES (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    tittle VARCHAR(255),
+    id BIGINT PRIMARY KEY,
+    title VARCHAR(255),
     description TEXT,
     language VARCHAR(255),
-    createdBy VARCHAR(255) NOT NULL,
-    creationDate DATETIME,
-    price DOUBLE,
-    have_discount boolean default false,
+    created_by VARCHAR(255) NOT NULL,
+    creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    price DECIMAL (10,2),
+    have_discount boolean DEFAULT FALSE,
+    discount_price DECIMAL (10,2),
+    is_enabled boolean DEFAULT TRUE,
     level VARCHAR(255)
 );
 
 -- Crear la tabla COURSE_CONTENT
 CREATE TABLE COURSE_CONTENT (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT PRIMARY KEY,
     course_id BIGINT,
     tittle VARCHAR(255),
     duration VARCHAR(255),
@@ -22,7 +25,7 @@ CREATE TABLE COURSE_CONTENT (
 
 -- Crear la tabla VIDEOS
 CREATE TABLE VIDEOS (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT PRIMARY KEY,
     title VARCHAR(255),
     code VARCHAR(255),
     duration INT,

@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 public class Video {
 
   private Long id;
-  private String tittle;
+  private String title;
+  private String code;
   private Double duration;
 
 
