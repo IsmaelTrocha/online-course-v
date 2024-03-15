@@ -7,6 +7,7 @@ import com.onlinecourse.course.infrastructure.api.dto.response.CourseResponse;
 import com.onlinecourse.course.infrastructure.api.dto.response.MessageResponse;
 import com.onlinecourse.course.infrastructure.api.mapper.request.CourseRequestMapper;
 import com.onlinecourse.course.infrastructure.api.mapper.response.CourseResponseMapper;
+import com.onlinecourse.course.shared.exception.code.MessageCode;
 import com.onlinecourse.course.shared.utils.MessageUtils;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
@@ -36,7 +37,10 @@ public class CourseController {
       @RequestHeader String createdBy) {
     createCourseApplication.createCourse(courseRequestMapper.toEntity(courseRequest), createdBy);
     return new ResponseEntity<>(
-        new MessageResponse("201", "Course Created Successfully!!", LocalDateTime.now()),
+        new MessageResponse(
+            messageUtils.getMessage(MessageCode.COURSE_CREATED_SUCCESSFULLY.getCode()),
+            messageUtils.getMessage(MessageCode.COURSE_CREATED_SUCCESSFULLY.getType()),
+            LocalDateTime.now()),
         HttpStatus.CREATED);
   }
 
