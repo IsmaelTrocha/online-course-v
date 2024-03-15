@@ -28,6 +28,6 @@ public class VideoDto {
   @ManyToOne
   @JoinColumn(name = "course_content_id")
   @JsonIgnore
-  private CourseContentDto courseContentId;
+  private CourseContentDto courseContent;
   private String duration;
 }

@@ -32,8 +32,6 @@ public class CourseDto {
   private Long id;
   private String title;
   private String description;
-  @OneToMany(mappedBy = "courseId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  private List<CourseContentDto> courseContents;
   @Enumerated(EnumType.STRING)
   private Language language;
   @NonNull
@@ -42,4 +40,5 @@ public class CourseDto {
   private Double price;
   @Enumerated(EnumType.STRING)
   private Level level;
+  private String duration;
 }

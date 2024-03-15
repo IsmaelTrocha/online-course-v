@@ -1,24 +1,24 @@
-package com.onlinecourse.course.domain.entities;
+package com.onlinecourse.course.infrastructure.api.dto.response;
 
-import java.time.LocalDateTime;
+import com.onlinecourse.course.domain.entities.Language;
+import com.onlinecourse.course.domain.entities.Level;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
+@Data
 @NoArgsConstructor
-public class Course {
+public class CourseResponse {
+
 
   private Long id;
   private String title;
   private String description;
-  private List<CourseContent> courseContents;
+  private List<CourseContentResponse> courseContents;
   private Language language;
   private Double price;
-  private String createdBy;
-  private String duration;
-  private LocalDateTime creationDate;
   private Level level;
+  private String duration;
 }
