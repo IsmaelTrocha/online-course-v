@@ -1,20 +1,16 @@
-package com.onlinecourse.course.domain.entities;
-
+package com.onlinecourse.course.infrastructure.api.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
+@Data
 @NoArgsConstructor
-public class Video {
+public class VideoResponse {
 
   private Long id;
   private String title;
   private String code;
-  private CourseContent courseContent;
-  private Double duration;
-
 
 }
