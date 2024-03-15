@@ -1,6 +1,6 @@
 -- Crear la tabla COURSES
 CREATE TABLE COURSES (
-    id BIGINT PRIMARY KEY,
+    id bigserial PRIMARY KEY,
     title VARCHAR(255),
     description TEXT,
     language VARCHAR(255),
@@ -16,16 +16,16 @@ CREATE TABLE COURSES (
 
 -- Crear la tabla COURSE_CONTENT
 CREATE TABLE COURSE_CONTENT (
-    id BIGINT PRIMARY KEY,
+    id bigserial PRIMARY KEY,
     course_id BIGINT,
-    tittle VARCHAR(255),
+    title VARCHAR(255),
     duration VARCHAR(255),
     FOREIGN KEY (course_id) REFERENCES COURSES(id)
 );
 
 -- Crear la tabla VIDEOS
 CREATE TABLE VIDEOS (
-    id BIGINT PRIMARY KEY,
+    id bigserial PRIMARY KEY,
     title VARCHAR(255),
     code VARCHAR(255),
     duration INT,

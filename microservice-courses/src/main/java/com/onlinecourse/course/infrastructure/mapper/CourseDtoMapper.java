@@ -9,7 +9,7 @@ import org.mapstruct.MappingConstants.ComponentModel;
 
 @Mapper(componentModel = ComponentModel.SPRING, uses = {
     CourseContentDtoMapper.class
-},injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+}, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface CourseDtoMapper extends EntityToDto<Course, CourseDto> {
 
 }

@@ -9,7 +9,7 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Getter
-public class BaseException extends RuntimeException{
+public class BaseException extends RuntimeException {
 
   @Serial
   private static final long serialVersionUID = -824690113517284691L;
