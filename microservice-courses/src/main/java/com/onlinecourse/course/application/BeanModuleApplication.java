@@ -2,14 +2,12 @@ package com.onlinecourse.course.application;
 
 import com.onlinecourse.course.application.course.CreateCourseApplication;
 import com.onlinecourse.course.application.course.FindCourseByIdApplication;
-import com.onlinecourse.course.application.video.CreateVideoApplication;
-import com.onlinecourse.course.application.video.FindVideoByIdApplication;
-import com.onlinecourse.course.application.video.UpdateVideoByIdApplication;
+import com.onlinecourse.course.application.coursecontent.FindCourseContentByCourseIdApplication;
+import com.onlinecourse.course.application.video.FindAllVideosByCourseContentIdApplication;
 import com.onlinecourse.course.domain.services.course.CreateCourseService;
 import com.onlinecourse.course.domain.services.course.FindCourseByIdService;
-import com.onlinecourse.course.domain.services.video.CreateVideoService;
-import com.onlinecourse.course.domain.services.video.FindVideoByIdService;
-import com.onlinecourse.course.domain.services.video.UpdateVideoService;
+import com.onlinecourse.course.domain.services.coursecontent.FindCourseContentByCourseIdService;
+import com.onlinecourse.course.domain.services.video.FindAllVideosByCourseContentIdService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,5 +25,19 @@ public class BeanModuleApplication {
   public FindCourseByIdApplication findCourseByIdApplication(
       FindCourseByIdService findCourseByIdService) {
     return new FindCourseByIdApplication(findCourseByIdService);
+  }
+
+  @Bean
+  public FindCourseContentByCourseIdApplication findCourseContentByCourseIdApplication(
+      FindCourseContentByCourseIdService findCourseContentByCourseIdService,
+      FindAllVideosByCourseContentIdService findAllVideosByCourseContentIdService) {
+    return new FindCourseContentByCourseIdApplication(findCourseContentByCourseIdService,
+        findAllVideosByCourseContentIdService);
+  }
+
+  @Bean
+  public FindAllVideosByCourseContentIdApplication findAllVideosByCourseContentIdApplication(
+      FindAllVideosByCourseContentIdService findAllVideosByCourseContentIdService) {
+    return new FindAllVideosByCourseContentIdApplication(findAllVideosByCourseContentIdService);
   }
 }

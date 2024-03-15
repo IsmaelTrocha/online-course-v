@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class CourseContent {
 
   private Long id;
-  private Course courseId;
+  private Course course;
   private String title;
   private List<Video> videos;
   private String duration;
